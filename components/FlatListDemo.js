@@ -1,35 +1,52 @@
 import React,{useState,useEffect} from 'react'
-import { View, Text,FlatList,SafeAreaView,StyleSheet,StatusBar,Image, TouchableOpacity, Linking } from 'react-native'
-import { WebView } from 'react-native-webview';
+import { View, Text,FlatList,SafeAreaView,StyleSheet,StatusBar,Image, TouchableOpacity, Linking,Dimensions  } from 'react-native'
 import * as rssParser from 'react-native-rss-parser';
 import HTML from "react-native-render-html";
 
-
-const fetchRSS = () => {
-    return fetch("https://devblogs.microsoft.com/appcenter/feed/")
-    .then(res=>res.text())
-    .then(resData=>rssParser.parse(resData))
-    .then((rss)=>{
-      return rss.items
-    })
-    .catch((err)=>{
-      console.error(err);
-    });
-}
-
-const FlatListDemo = () => {
+const FlatListDemo = ({ navigation, source }) => {
     const [rss,setRss] = useState([])
-    // const [loadWebView,setLoadWebView] = useState(false)
-    // const [url,setUrl] = useState("")
+    const [loading, setLoading] = useState(false)
     
-
     useEffect(() => {
         // console.log("useEffect")
-        fetchRSS().then((items)=>setRss(items))
-    }, [])
+        // fetchRSS().then((items)=>setRss(items))
+        fetchRSS(source);
+    }, [source])
 
+    const fetchRSS = async (source) => {
+      setLoading(true)
+      let array = []
+
+      for (let index = 0; index < source.data.length; index++) {
+        const element = source.data[index];
+      
+        if (!element.isOn) {
+          continue
+        }
+  
+        await fetch(element.feed)
+        .then(res=>res.text())
+        .then(resData=>rssParser.parse(resData))
+        .then((rssObj)=>{
+
+          array = [...array, ...rssObj.items]
+        })
+        .catch((err)=>{
+          console.error(err);
+        });
+      }
+
+      setRss(array.sort((a,b) => {
+        return new Date(b.published) - new Date(a.published)
+      }))
+      setLoading(false)
+    }
 
     const getAuthors = (authors) => {
+      console.log(authors)
+      if (authors == null) {
+        return
+      }
       let authorsText = ""
       authors.forEach(element => {
         authorsText += (element.name + " ")
@@ -39,19 +56,20 @@ const FlatListDemo = () => {
     } 
     
     const onPressItem = (item) => {
-      // // <WebView source={item.links[0].url}/>
+      
       // setUrl(item.links[0].url)
       // setLoadWebView(true)
     }
     
     const Item = ({item}) => {
         return (
-            <TouchableOpacity style={styles.item} onPress={() => onPressItem(item)}>
+            <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('Details',{Url: item.links[0].url})}>
                 
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.author}>{  getAuthors(item.authors) } </Text>
+                {/* <Text style={styles.dateTime}>{item.}</Text> */}
                 <Text style={styles.dateTime}>{item.published}</Text>
-                <HTML source={{ html: item.description}}  />
+                <HTML source={{ html: item.description}} ignoredTags={['img']} />
                 
             </TouchableOpacity>
         );
@@ -59,25 +77,26 @@ const FlatListDemo = () => {
 
     return ( 
           <SafeAreaView style={styles.container}>
-            <FlatList 
+            {loading?<Text>Loading...</Text>:<FlatList 
                 data = {rss}
                 renderItem = { ({item}) => <Item item = {item}  />   } 
                 keyExtractor={item=>item.id}      
-                    
-            />  
+                extraData={source}
+                
+            />  }
           </SafeAreaView> 
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      // flex: 1,
       // marginTop: StatusBar.currentHeight || 0,
       // paddingTop: StatusBar.currentHeight || 0,
-      backgroundColor: '#fefae0'
+      // backgroundColor: 'white'// '#fefae0'
     },
     item: {
-      backgroundColor: '#faedcd',
+      backgroundColor: 'white',//'#fefae0',// '#faedcd',
       shadowColor: '#d4a373',
       padding: 40,
       marginVertical: 8,
@@ -97,7 +116,6 @@ const styles = StyleSheet.create({
     },
     dateTime: {
       fontSize: 10,
-      // fontStyle: 'italic'
     },
   });
 

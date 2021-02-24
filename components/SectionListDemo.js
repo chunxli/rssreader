@@ -1,55 +1,43 @@
 import React, { useState,useEffect } from 'react'
 import { StyleSheet,View, SectionList, SafeAreaView, Text,Switch } from 'react-native';
 
-const SectionListDemo = () => {
+const SectionListDemo = ({source, toggleSwitch}) => {
   const [updateSingle,setUpdateSingle] = useState(false);
-  const [data, setData] = useState([
-    {
-      title: "RSS Source",
-      data: [
-        {name: "App Center", isOn: false}, 
-        {name:"Apple Developer", isOn: true}, 
-        {name:"Android Developer", isOn: false}
-      ]
-    },
+  // const [data, setData] = useState([
+  //   {
+  //     title: "RSS Source",
+  //     data: [
+  //       {name: "App Center Dev Blog", isOn: false}, 
+  //       {name:"Apple Developer", isOn: true}, 
+  //       {name:"Xamarin Dev Blog", isOn: false}
+  //     ]
+  //   },
     
-  ]);
-  const toggleSwitch = (index,section) => {
-    const arr = data;
-    arr.map((item)=>{
-      if (item.title === section.title) {
-        item.data[index].isOn = !item.data[index].isOn
-        return item
-      }
-      return item
-    });
-    console.log(arr)
-    setData(arr)
-    setUpdateSingle(!updateSingle)
-  };
+  // ]);
+  
 
   const Item = ({ index,section,item }) => 
   (
-      <View style={styles.item}>
+      <View style={styles.itemContainer}>
         <Text style={styles.item}>{item.name}</Text>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
           thumbColor={item.isOn ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
           onValueChange={(value) => {
-              // console.log(value?"true":"false")
               toggleSwitch(index,section)
+              setUpdateSingle(!updateSingle)
             }
           }
           value={item.isOn}
-          
+          style={styles.switch}
         />
       </View>
   );
 
   return (
       <SectionList 
-        sections = {data}
+        sections = {[source]}
         keyExtractor = {(item, index) => item.name + index}
         renderItem = {({item,index,section})=> <Item item={item} index={index} section={section}  />  }
         renderSectionHeader = { ({section: {title}}) => (
@@ -68,19 +56,31 @@ const styles = StyleSheet.create({
       flex: 1,
       // marginTop: StatusBar.currentHeight || 0,
       // paddingTop: StatusBar.currentHeight || 0,
-      backgroundColor: '#fefae0'
+      // backgroundColor: '#fefae0'
     },
     item: {
-      // backgroundColor: "white",
-      // padding:10,
-      // marginVertical: 10,
-      // fontSize: 20
-      
+      flex:9,
+      textAlignVertical: 'center',
+  
+    },
+    switch: {
+      flex:1
+    },
+    
+    itemContainer: {
+      flexDirection: 'row',
+      backgroundColor: "white",
+      padding:10,
+      marginVertical: 5,
+      marginHorizontal: 5,
+      borderRadius: 15,
+      // borderWidth:1,
     },
     header: {
       fontSize: 20,
       // backgroundColor: "#fff",
-      margin: 10, 
+      marginVertical:10,
+      marginHorizontal: 5
     },
     title: {
       fontSize: 12
