@@ -28,7 +28,6 @@ const FlatListDemo = ({ navigation, source }) => {
         .then(res=>res.text())
         .then(resData=>rssParser.parse(resData))
         .then((rssObj)=>{
-
           array = [...array, ...rssObj.items]
         })
         .catch((err)=>{
@@ -39,11 +38,11 @@ const FlatListDemo = ({ navigation, source }) => {
       setRss(array.sort((a,b) => {
         return new Date(b.published) - new Date(a.published)
       }))
+
       setLoading(false)
     }
 
     const getAuthors = (authors) => {
-      console.log(authors)
       if (authors == null) {
         return
       }
@@ -55,11 +54,6 @@ const FlatListDemo = ({ navigation, source }) => {
       return authorsText
     } 
     
-    const onPressItem = (item) => {
-      
-      // setUrl(item.links[0].url)
-      // setLoadWebView(true)
-    }
     
     const Item = ({item}) => {
         return (
@@ -67,7 +61,6 @@ const FlatListDemo = ({ navigation, source }) => {
                 
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.author}>{  getAuthors(item.authors) } </Text>
-                {/* <Text style={styles.dateTime}>{item.}</Text> */}
                 <Text style={styles.dateTime}>{item.published}</Text>
                 <HTML source={{ html: item.description}} ignoredTags={['img']} />
                 
