@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import codePush from "react-native-code-push";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +18,7 @@ const App = () => {
   // Xamarin Dev Blog RSS: https://devblogs.microsoft.com/xamarin/feed/
 
   const [source, setSource] = useState({
-      title: "RSS Source",
+      title: "RSS Sources",
         data: [
           {name: "App Center Dev Blog", isOn: true, feed: "https://devblogs.microsoft.com/appcenter/feed/" }, 
           {name:"Apple Developer", isOn: false, feed: "https://developer.apple.com/news/rss/news.rss"}, 
@@ -105,4 +106,4 @@ const styles = StyleSheet.create({
   
 });
 
-export default App
+export default codePush(App)
