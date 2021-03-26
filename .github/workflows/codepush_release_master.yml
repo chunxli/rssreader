@@ -14,17 +14,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '12.x'
     - run: npm install -g appcenter-cli
     - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-Android -d Staging -k ${{ secrets.PRIVATEKEY }} --token ${{ secrets.API_TOKEN }}
     - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-iOS -d Staging -k ${{ secrets.PRIVATEKEY }} --token ${{ secrets.API_TOKEN }}
