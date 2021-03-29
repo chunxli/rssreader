@@ -1,3 +1,12 @@
+# Build Status
+
+## iOS
+[![Build status](https://build.appcenter.ms/v0.1/apps/bc1d4e0e-07f4-4344-863c-0e0b5feba1e1/branches/master/badge)](https://appcenter.ms)
+
+## Android
+[![Build status](https://build.appcenter.ms/v0.1/apps/6d8f1c18-d049-4ddb-8a3a-4004bd32f953/branches/master/badge)](https://appcenter.ms)
+
+
 # Introduction
 
 React Native List Demo 
