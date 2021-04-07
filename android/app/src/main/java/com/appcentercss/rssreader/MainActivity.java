@@ -1,4 +1,4 @@
-package com.listdemo;
+package com.appcentercss.rssreader;
 
 import com.facebook.react.ReactActivity;
 
