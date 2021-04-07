@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ListDemo</string>
+    <string name="app_name">RSSReader</string>
     <string moduleConfig="true" name="CodePushDeploymentKey">cNV6_E5E40cOlHSuGKE1TsZSQf7ItfFNuJj2o</string>
     <string name="CodePushPublicKey">-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk9hP5L4p3RQD947By8ac
