@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { View, Text,FlatList,SafeAreaView,StyleSheet,StatusBar,Image, TouchableOpacity, Linking,Dimensions  } from 'react-native'
 import * as rssParser from 'react-native-rss-parser';
 import HTML from "react-native-render-html";
+import codePush from "react-native-code-push";
 
 const FlatListDemo = ({ navigation, source }) => {
     const [rss,setRss] = useState([])
@@ -11,6 +12,12 @@ const FlatListDemo = ({ navigation, source }) => {
         // console.log("useEffect")
         // fetchRSS().then((items)=>setRss(items))
         fetchRSS(source);
+
+        codePush.getUpdateMetadata().then((update) => {
+          if (update) {
+              console.log(update)
+          }
+      });
     }, [source])
 
     const fetchRSS = async (source) => {

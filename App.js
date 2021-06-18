@@ -10,7 +10,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import codePush from "react-native-code-push";
 
 const Tab = createBottomTabNavigator();
-
+const codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
 const App = () => {
 
   // Apple Developer RSS: https://developer.apple.com/news/rss/news.rss
@@ -18,7 +18,7 @@ const App = () => {
   // Xamarin Dev Blog RSS: https://devblogs.microsoft.com/xamarin/feed/
 
   const [source, setSource] = useState({
-      title: "RSS Sources",
+      title: "RSS Source",
         data: [
           {name: "App Center Dev Blog", isOn: true, feed: "https://devblogs.microsoft.com/appcenter/feed/" }, 
           {name:"Apple Developer", isOn: false, feed: "https://developer.apple.com/news/rss/news.rss"}, 
@@ -106,4 +106,7 @@ const styles = StyleSheet.create({
   
 });
 
-export default codePush(App)
+// export default codePush(App)
+// export default App
+
+export default codePush(codePushOptions)(App)

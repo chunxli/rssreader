@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react'
-import { StyleSheet,View, SectionList, SafeAreaView, Text,Switch } from 'react-native';
+import { StyleSheet,View, SectionList, SafeAreaView, Text,Switch, Button } from 'react-native';
+import codePush from "react-native-code-push";
 
 const SectionListDemo = ({source, toggleSwitch}) => {
   const [updateSingle,setUpdateSingle] = useState(false);
@@ -15,6 +16,12 @@ const SectionListDemo = ({source, toggleSwitch}) => {
     
   // ]);
   
+  const onButtonPress = () => {
+    codePush.sync({
+        updateDialog: true,
+        installMode: codePush.InstallMode.IMMEDIATE
+    });
+  }
 
   const Item = ({ index,section,item }) => 
   (
@@ -36,18 +43,21 @@ const SectionListDemo = ({source, toggleSwitch}) => {
   );
 
   return (
-      <SectionList 
-        sections = {[source]}
-        keyExtractor = {(item, index) => item.name + index}
-        renderItem = {({item,index,section})=> <Item item={item} index={index} section={section}  />  }
-        renderSectionHeader = { ({section: {title}}) => (
-            <Text style={styles.header}>{title}</Text>
-          )
-        }
-        extraData = {updateSingle}
-        style={styles.container}
-      />
-
+      <>
+        <SectionList 
+          sections = {[source]}
+          keyExtractor = {(item, index) => item.name + index}
+          renderItem = {({item,index,section})=> <Item item={item} index={index} section={section}  />  }
+          renderSectionHeader = { ({section: {title}}) => (
+              <Text style={styles.header}>{title}</Text>
+            )
+          }
+          extraData = {updateSingle}
+          style={styles.container}
+        />
+        <Button title='Check for update!' onPress={onButtonPress} />
+        <Text>eee</Text>
+      </>
   )
 }
 
