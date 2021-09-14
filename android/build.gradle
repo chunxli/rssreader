@@ -6,9 +6,6 @@ buildscript {
         minSdkVersion = 16
         compileSdkVersion = 29
         targetSdkVersion = 29
-        androidXCore = "1.0.2"
-        androidXAnnotation = "1.1.0"
-        androidXBrowser = "1.0.0"
     }
     repositories {
         google()
@@ -54,6 +51,7 @@ allprojects {
                 includeGroup("com.facebook.yoga")
                 includeGroup("com.facebook.fresco")
 //                includeGroup("org.codehaus.groovy")
+
 
             }
         }
