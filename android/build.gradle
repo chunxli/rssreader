@@ -20,6 +20,7 @@ buildscript {
                 includeGroup("com.facebook.fbjni")
                 includeGroup("com.facebook.yoga")
                 includeGroup("com.facebook.fresco")
+//                includeGroup("org.codehaus.groovy")
             }
         }
     }
@@ -52,6 +53,7 @@ allprojects {
                 includeGroup("com.facebook.fbjni")
                 includeGroup("com.facebook.yoga")
                 includeGroup("com.facebook.fresco")
+//                includeGroup("org.codehaus.groovy")
 
             }
         }
