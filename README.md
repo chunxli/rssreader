@@ -9,13 +9,27 @@
 
 # Introduction
 
-React Native List Demo 
+React Native Demo 
 
 Fetch RSS contents from following sources and display them.
 
 - App Center Dev Blog: https://devblogs.microsoft.com/appcenter/feed/
 - Apple Developer: https://developer.apple.com/news/rss/news.rss
 - Xamarin Dev Blog: https://devblogs.microsoft.com/xamarin/feed/
+
+# React Native Build Command Lines
+
+```bash
+yarn install
+
+# Build iOS
+yarn ios 
+
+# Build Android
+yarn android
+```
+
+
 
 # CodePush Integrated and Code Signing Enabled
 
