@@ -133,7 +133,7 @@ android {
         applicationId "com.appcentercss.rssreader"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
+        versionCode 38
         versionName "1.0"
     }
     splits {
