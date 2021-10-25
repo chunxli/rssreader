@@ -30,7 +30,6 @@ yarn android
 ```
 
 
-
 # CodePush Integrated and Code Signing Enabled
 
 If you want to test with your own CodePush configuration, please update following fields:
@@ -55,6 +54,13 @@ For example:
 appcenter codepush release-react -a KevinApps/RSSReader-RN-Android -d Staging -k ./private.pem
 ```
 
+# Make a Big asset
+
+Generate 100MB File
+
+```bash
+dd if=/dev/zero of=testfile bs=1024 count=102400
+```
 
 # Overview
 
