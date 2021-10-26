@@ -1,0 +1,140 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "background": "transparent",
+  "height": "container",
+  "padding": 0,
+  "view": { "stroke": null },
+  "layer": [
+    {
+      "data": { "name": "elevationData" },
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 8,
+        "fill": { "signal": "color.systemTealColor" },
+        "width": { "signal": "barWidth" },
+        "opacity": { "signal": "datum.offset < progress ? 0.5 : 1" }
+      },
+      "encoding": {
+        "x": {
+          "field": "offset",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "nice": false,
+            "padding": 0,
+            "domain": [0, { "signal": "routeLength" }]
+          },
+          "axis": {
+            "formatType": "formatOffset",
+            "format": "",
+            "ticks": true,
+            "tickSize": { "signal": "guideLabelStyle.lineHeight + 5" },
+            "labelPadding": { "signal": "-guideLabelStyle.lineHeight - 1" },
+            "tickDash": [2, 2],
+            "gridDash": [2, 2],
+            "values": [
+              0,
+              { "signal": "routeLength / 4" },
+              { "signal": "routeLength / 2" },
+              { "signal": "routeLength / 4 * 3" },
+              { "signal": "routeLength" }
+            ],
+            "labelOverlap": false,
+            "labelOpacity": {
+              "signal": "(datum.index === 0 || datum.index === 1) ? (datum.index ? (showRightLabel ? 1 : 0) : (showLeftLabel ? 1 : 0)) : 0"
+            },
+            "labelOffset": {
+              "signal": "(datum.index ? 1 : -1) * (xAxisRTL ? 3 : -3)"
+            },
+            "tickOpacity": {
+              "signal": "(datum.index === 0 || datum.index === 1) ? 1 : 0"
+            }
+          }
+        },
+        "y": {
+          "field": "elevation",
+          "type": "quantitative",
+          "scale": {
+            "zero": false,
+            "nice": 2,
+            "domain": { "unionWith": { "signal": "elevationDomainUnionWith" } }
+          },
+          "axis": { "tickCount": 2, "title": false, "labels": false }
+        }
+      }
+    },
+    {
+      "data": { "values": [{}] },
+      "encoding": {
+        "x": { "datum": { "signal": "progress" }, "type": "quantitative" }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "strokeWidth": 1,
+            "strokeDash": [2, 2],
+            "stroke": { "signal": "color.secondaryLabelColor" },
+            "aria": false
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "y": { "signal": "height" },
+            "yOffset": { "signal": "guideLabelStyle.lineHeight / 2 + 4" },
+            "fontSize": { "signal": "textStyle.footnote.pointSize" },
+            "fontWeight": "medium",
+            "fill": { "signal": "color.secondaryLabelColor" },
+            "text": { "signal": "formatOffset(progress)" },
+            "align": {
+              "signal": "pixelProgress < (textSizes.progress / 2 + 4) ? (!xAxisRTL ? 'left' : 'right') : pixelProgress > width - (textSizes.progress / 2 + 4) ? (!xAxisRTL ? 'right' : 'left') : 'center'"
+            },
+            "description": { "signal": "progressDescription" }
+          }
+        }
+      ]
+    },
+    {
+      "data": { "name": "segmentDescriptions" },
+      "mark": { "type": "rect", "opacity": 0 },
+      "encoding": {
+        "x": { "field": "offset_start", "type": "quantitative" },
+        "x2": { "field": "offset_end", "type": "quantitative" },
+        "description": { "field": "description", "type": "nominal" }
+      }
+    }
+  ],
+  "config": {
+    "axis": {
+      "labelFontWeight": "medium",
+      "labelColor": { "signal": "color.tertiaryLabelColor" },
+      "gridColor": { "signal": "color.tertiaryLabelColor" }
+    },
+    "signals": [
+      { "name": "routeLength", "value": 1 },
+      { "name": "barWidth", "value": 4 },
+      { "name": "elevationDomainUnionWith", "value": [0, 1] },
+      { "name": "progress", "value": 0 },
+      { "name": "progressDescription", "value": "Some progress" },
+      {
+        "name": "textSizes",
+        "value": { "startLabel": 1, "progress": 1, "endLabel": 1 }
+      },
+      { "name": "pixelProgress", "update": "progress / routeLength * width" },
+      {
+        "name": "xAxisRTL",
+        "update": "locale.characterDirection === 'rightToLeft' && locale.languageCode !== 'he'"
+      },
+      {
+        "name": "showLeftLabel",
+        "update": "pixelProgress > textSizes.startLabel + 4 + 10 + textSizes.progress / 2"
+      },
+      {
+        "name": "showRightLabel",
+        "update": "pixelProgress < width - (textSizes.endLabel + 4 + 10 + textSizes.progress / 2)"
+      },
+      { "name": "guideLabelStyle", "update": "textStyle.footnote" }
+    ]
+  }
+}

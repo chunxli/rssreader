@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>plugins</key>
+	<array>
+		<dict>
+			<key>identifier</key>
+			<string>com.apple.ibooks.plugin.Bookshelf</string>
+			<key>class</key>
+			<string>BKBookshelfViewController</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>com.apple.ibooks.plugin.Welcome</string>
+			<key>class</key>
+			<string>BKWelcomeViewController</string>
+			<key>window-type</key>
+			<string>docked</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>com.apple.ibooks.plugin.MergeToiCloud</string>
+			<key>class</key>
+			<string>BKMergeiTunesToiCloudViewController</string>
+			<key>window-type</key>
+			<string>docked</string>
+		</dict>
+	</array>
+</dict>
+</plist>

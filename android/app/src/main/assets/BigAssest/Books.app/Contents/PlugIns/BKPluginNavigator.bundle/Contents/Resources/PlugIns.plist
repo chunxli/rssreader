@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>plugins</key>
+	<array>
+		<dict>
+			<key>identifier</key>
+			<string>com.apple.ibooks.plugin.MainViewController</string>
+			<key>class</key>
+			<string>BKMainViewController</string>
+			<key>default-frame</key>
+			<string>{{0,0},{1184,724}}</string>
+			<key>window-type</key>
+			<string>com.apple.ibooks.plugin.MainViewController.window</string>
+			<key>minimum-frame</key>
+			<string>{{0,0},{1184,530}}</string>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>com.apple.ibooks.plugin.MainSearchViewController</string>
+			<key>class</key>
+			<string>BKMainSearchViewController</string>
+			<key>window-hide-on-close</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>com.apple.ibooks.plugin-type.window</string>
+			<key>identifier</key>
+			<string>com.apple.ibooks.plugin.MainViewController.window</string>
+			<key>class</key>
+			<string>IMNativeWindow</string>
+			<key>toolbar-is-permanent</key>
+			<true/>
+			<key>toolbar-fade-behavior</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+</dict>
+</plist>

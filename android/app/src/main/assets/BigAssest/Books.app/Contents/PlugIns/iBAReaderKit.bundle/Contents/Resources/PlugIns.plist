@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>plugins</key>
+	<array>
+		<dict>
+			<key>type</key>
+			<string>com.apple.ibooks.plugin-type.assetHelper</string>
+			<key>identifier</key>
+			<string>com.apple.ibooks.plugin.assetHelper.ibooks</string>
+			<key>class</key>
+			<string>THBKAssetHelper</string>
+			<key>associatedAssetType</key>
+			<string>application/ibooks</string>
+			<key>supportedFileExtensions</key>
+			<array>
+				<string>ibooks</string>
+			</array>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>com.apple.ibooks.plugin-type.asset</string>
+			<key>identifier</key>
+			<string>com.apple.ibooks.plugin.asset.ibooks</string>
+			<key>class</key>
+			<string>THMacRootViewController</string>
+			<key>associatedAssetType</key>
+			<string>application/ibooks</string>
+			<key>associatedHelperPluginIdentifier</key>
+			<string>com.apple.ibooks.plugin.assetHelper.ibooks</string>
+			<key>default-frame</key>
+			<string>{{0,0},{800,800}}</string>
+			<key>window-type</key>
+			<string>com.apple.ibooks.plugin.Bliss.window</string>
+			<key>supportedFileExtensions</key>
+			<array>
+				<string>ibooks</string>
+				<string>epub</string>
+			</array>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>com.apple.ibooks.plugin-type.window</string>
+			<key>identifier</key>
+			<string>com.apple.ibooks.plugin.Bliss.window</string>
+			<key>class</key>
+			<string>BKReaderWindow</string>
+			<key>window-content-insets</key>
+			<string>{window-titlebar-height,0,0,0}</string>
+			<key>toolbar-fade-behavior</key>
+			<integer>1</integer>
+			<key>toolbar-class</key>
+			<string>BKReaderWindowToolbarViewController</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+		<style type="text/css">
+p {
+	font-family: "Helvetica Neue";
+	font-size: 13px;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	color: {{.color}};
+}
+body {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+div {
+	-webkit-writing-mode: horizontal-tb;
+	height: 2em;
+	line-height: 2em;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+img {
+	height: 1em;
+}
+		</style>
+	</head>
+	<body>
+		<div>
+			<p class="contents">
+				{{.contents}}
+			</p>
+		</div>
+	</body>
+</html>

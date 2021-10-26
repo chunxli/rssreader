@@ -1,0 +1,15 @@
+{
+    "applinks": {
+        "details": [{
+            "appID": "com.apple.Maps",
+            "components": [
+                { "/": "", "?": { "ug": "?*" } },
+                { "/": "", "?": { "pg": "?*" } },
+                { "/": "", "?": { "pp": "?*" } },
+                { "/": "all", "?": "" }
+            ],
+            "alwaysEnabled": true
+        }
+        ]
+    }
+}

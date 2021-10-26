@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "background": "transparent",
+  "height": "container",
+  "padding": 0,
+  "view": { "stroke": null },
+  "layer": [
+    {
+      "data": { "name": "elevationData" },
+      "mark": { "type": "bar", "width": 2, "aria": false },
+      "encoding": {
+        "x": {
+          "field": "offset",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "nice": false,
+            "padding": 0,
+            "domain": [0, { "signal": "routeLength" }]
+          },
+          "axis": {
+            "formatType": "formatOffset",
+            "format": "",
+            "ticks": true,
+            "tickSize": 10,
+            "tickDash": [2, 2],
+            "gridDash": [2, 2],
+            "labelSeparation": 10,
+            "tickCount": 4,
+            "gridColor": { "signal": "color.secondaryLabelColor" },
+            "tickColor": { "signal": "color.secondaryLabelColor" },
+            "labelColor": { "signal": "color.labelColor" }
+          }
+        },
+        "y": {
+          "field": "elevation",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "zero": false,
+            "nice": 3,
+            "domain": { "unionWith": { "signal": "elevationDomainUnionWith" } }
+          },
+          "axis": {
+            "tickCount": 3,
+            "formatType": "formatElevation",
+            "format": "",
+            "gridColor": { "signal": "color.tertiaryLabelColor" },
+            "labelColor": { "signal": "color.labelColor" }
+          }
+        }
+      }
+    },
+    {
+      "data": { "name": "segmentDescriptions" },
+      "mark": { "type": "rect", "opacity": 0 },
+      "encoding": {
+        "x": { "field": "offset_start", "type": "quantitative" },
+        "x2": { "field": "offset_end", "type": "quantitative" },
+        "description": { "field": "description", "type": "nominal" }
+      }
+    }
+  ],
+  "config": {
+    "axisY": { "style": "axis-right" },
+    "signals": [
+      { "name": "routeLength", "value": 1 },
+      { "name": "elevationDomainUnionWith", "value": [0, 1] }
+    ]
+  }
+}

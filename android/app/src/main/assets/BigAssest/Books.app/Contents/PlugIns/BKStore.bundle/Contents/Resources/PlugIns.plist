@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>plugins</key>
+	<array>
+		<dict>
+			<key>identifier</key>
+			<string>com.apple.ibooks.plugin.Bookstore</string>
+			<key>class</key>
+			<string>BKBookstoreViewController</string>
+			<key>window-hide-on-close</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>com.apple.ibooks.plugin.AudiobookStore</string>
+			<key>class</key>
+			<string>BKBookstoreViewController</string>
+			<key>window-hide-on-close</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>identifier</key>
+			<string>com.apple.ibooks.plugin.SearchStore</string>
+			<key>class</key>
+			<string>BKBookstoreViewController</string>
+			<key>window-hide-on-close</key>
+			<true/>
+		</dict>
+	</array>
+</dict>
+</plist>

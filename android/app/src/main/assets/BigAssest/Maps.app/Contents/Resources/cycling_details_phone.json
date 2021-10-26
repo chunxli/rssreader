@@ -1,0 +1,101 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "background": "transparent",
+  "height": "container",
+  "padding": 0,
+  "view": { "stroke": null },
+  "layer": [
+    {
+      "data": { "name": "elevationData" },
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 4,
+        "fill": { "signal": "color.systemTealColor" },
+        "width": { "signal": "barWidth" },
+        "aria": false
+      },
+      "encoding": {
+        "x": {
+          "field": "offset",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "nice": false,
+            "padding": 0,
+            "domain": [0, { "signal": "routeLength" }]
+          },
+          "axis": {
+            "formatType": "formatOffset",
+            "format": "",
+            "ticks": true,
+            "tickSize": { "signal": "guideLabelStyle.lineHeight + 4" },
+            "labelPadding": { "signal": "-guideLabelStyle.lineHeight" },
+            "tickDash": [2, 2],
+            "gridDash": [2, 2],
+            "values": [
+              0,
+              { "signal": "routeLength / 4" },
+              { "signal": "routeLength / 2" },
+              { "signal": "routeLength / 4 * 3" },
+              { "signal": "routeLength" }
+            ],
+            "labelOverlap": false,
+            "labelOffset": {
+              "signal": "(datum.index ? 1 : -1) * (locale.characterDirection === 'rightToLeft' && locale.languageCode !== 'he' ? 3 : -3)"
+            },
+            "labelOpacity": {
+              "signal": "(datum.index === 0 || datum.index === 1) ? xAxisOpacity : 0"
+            },
+            "tickOpacity": {
+              "signal": "(datum.index === 0 || datum.index === 1) ? xAxisOpacity : 0"
+            }
+          }
+        },
+        "y": {
+          "field": "elevation",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "zero": false,
+            "nice": 2,
+            "domain": { "unionWith": { "signal": "elevationDomainUnionWith" } }
+          },
+          "axis": {
+            "tickCount": 2,
+            "labelExpr": "yAxis ? formatElevation(datum.value) : ''",
+            "labelPadding": { "signal": "yAxis ? 4 : 0" },
+            "labelFontSize": {
+              "signal": "yAxis ? guideLabelStyle.pointSize : 0"
+            },
+            "ticks": false
+          }
+        }
+      }
+    },
+    {
+      "data": { "name": "segmentDescriptions" },
+      "mark": { "type": "rect", "opacity": 0 },
+      "encoding": {
+        "x": { "field": "offset_start", "type": "quantitative" },
+        "x2": { "field": "offset_end", "type": "quantitative" },
+        "description": { "field": "description", "type": "nominal" }
+      }
+    }
+  ],
+  "config": {
+    "axis": {
+      "labelFontWeight": "medium",
+      "labelColor": { "signal": "color.tertiaryLabelColor" },
+      "gridColor": { "signal": "color.systemGray5Color" },
+      "tickColor": { "signal": "color.systemGray5Color" }
+    },
+    "axisY": { "style": "axis-right" },
+    "signals": [
+      { "name": "routeLength", "value": 1 },
+      { "name": "barWidth", "value": 2 },
+      { "name": "elevationDomainUnionWith", "value": [0, 1] },
+      { "name": "xAxisOpacity", "value": 1 },
+      { "name": "yAxis", "value": true }
+    ]
+  }
+}

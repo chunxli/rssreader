@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Test 0</key>
+	<dict>
+		<key>testParameters</key>
+		<dict>
+			<key>latitude</key>
+			<real>37.33348411594002</real>
+			<key>longitude</key>
+			<real>-122.032356262207</real>
+			<key>latitudeSpan</key>
+			<real>0.0003</real>
+			<key>longitudeSpan</key>
+			<real>0.0003</real>
+			<key>pitch</key>
+			<string>80.0</string>
+			<key>yaw</key>
+			<string>0.0</string>
+		</dict>
+		<key>testName</key>
+		<string>DeAnza-280</string>
+		<key>testType</key>
+		<string>VKMapView</string>
+	</dict>
+	<key>Test 1</key>
+	<dict>
+		<key>testParameters</key>
+		<dict>
+			<key>latitude</key>
+			<real>37.50690025394884</real>
+			<key>longitude</key>
+			<real>-122.3380851745605</real>
+			<key>latitudeSpan</key>
+			<real>0.002</real>
+			<key>longitudeSpan</key>
+			<real>0.002</real>
+			<key>pitch</key>
+			<string>80.0</string>
+			<key>yaw</key>
+			<string>308.00</string>
+		</dict>
+		<key>testName</key>
+		<string>280-92-Interchange</string>
+		<key>testType</key>
+		<string>VKMapView</string>
+	</dict>
+	<key>Test 2</key>
+	<dict>
+		<key>testParameters</key>
+		<dict>
+			<key>latitude</key>
+			<real>37.78502894901505</real>
+			<key>longitude</key>
+			<real>-122.4004626274109</real>
+			<key>latitudeSpan</key>
+			<real>0.0003</real>
+			<key>longitudeSpan</key>
+			<real>0.0003</real>
+			<key>pitch</key>
+			<string>80.0</string>
+			<key>yaw</key>
+			<string>316.0</string>
+		</dict>
+		<key>testName</key>
+		<string>3rd-Howard-SF</string>
+		<key>testType</key>
+		<string>VKMapView</string>
+	</dict>
+</dict>
+</plist>

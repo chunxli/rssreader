@@ -1,0 +1,12 @@
+{
+    "applinks": {
+        "details": [{
+            "appID": "com.apple.Maps",
+            "components": [
+                { "/": "/collection", "?": { "_col": "?*" } }
+            ],
+            "alwaysEnabled": true
+        }
+        ]
+    }
+}

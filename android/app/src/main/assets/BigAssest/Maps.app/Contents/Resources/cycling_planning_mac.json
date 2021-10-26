@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "background": "transparent",
+  "height": "container",
+  "padding": 0,
+  "view": { "stroke": null },
+  "layer": [
+    {
+      "data": { "name": "elevationData" },
+      "mark": {
+        "type": "bar",
+        "fill": { "signal": "selectedBarColor ? color.systemWhiteColor : color.tertiaryLabelColor" },
+        "width": { "signal": "barWidth" },
+        "aria": false
+      },
+      "encoding": {
+        "x": {
+          "field": "offset",
+          "type": "quantitative",
+          "scale": {
+            "nice": false,
+            "padding": 0,
+            "domain": [0, { "signal": "routeLength" }]
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "elevation",
+          "type": "quantitative",
+          "scale": {
+            "zero": false,
+            "nice": false,
+            "range": [{ "signal": "height - 3" }, 0],
+            "domain": { "unionWith": { "signal": "elevationDomainUnionWith" } }
+          },
+          "axis": null
+        }
+      }
+    },
+    {
+      "data": { "name": "segmentDescriptions" },
+      "mark": { "type": "rect", "opacity": 0 },
+      "encoding": {
+        "x": { "field": "offset_start", "type": "quantitative" },
+        "x2": { "field": "offset_end", "type": "quantitative" },
+        "description": { "field": "description", "type": "nominal" }
+      }
+    }
+  ],
+  "config": {
+    "signals": [
+      { "name": "routeLength", "value": 1 },
+      { "name": "barWidth", "value": 2 },
+      { "name": "elevationDomainUnionWith", "value": [0, 1] },
+      { "name": "selectedBarColor" }
+    ]
+  }
+}

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="<!-- @@DOCUMENT_CLASS@@ -->" __ibooks_iframe_theme="<!-- @@DOCUMENT_CLASS@@ -->" __ibooks_iframe_level="0">
+    <head>
+        <style type="text/css">
+            :root[__ibooks_iframe_theme=iframe-epub-gray] {
+                background-color:rgba(28.2353%,28.2353%,29.0196%,1);
+            }
+
+            :root[__ibooks_iframe_theme=iframe-epub-night][__ibooks_iframe_level="0"] {
+                background-color:rgba(0,0,0,1);
+            }
+
+            :root[__ibooks_iframe_theme=iframe-epub-night][__ibooks_iframe_level="1"] {
+                background-color:rgba(10.9804%,10.9804%,11.7647%,1);
+            }
+
+            body {
+                margin: 20px 2px;
+            }
+
+            .iframe-epub-white .ButtonContainer {
+                background: rgb(241,241,241);
+                color: rgb(133,133,133);
+            }
+
+            .iframe-epub-sepia .ButtonContainer {
+                background: rgb(241,241,241);
+                color: rgb(133,133,133);
+            }
+
+            .iframe-epub-gray .ButtonContainer {
+                background: rgb(90,90,92);
+                color: rgb(164,164,165);
+            }
+
+            .iframe-epub-night .ButtonContainer {
+                background: rgb(25,25,25);
+                color: rgb(128,128,128);
+            }
+
+            .ButtonContainer {
+                display: table;
+                height: -webkit-fill-available;
+                border-radius: 12pt;
+                background: rgb(0, 0, 0);
+                color: rgb(0, 0, 0);
+            }
+
+            .Button, .Text {
+                font: -apple-system-body;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: middle;
+                display: table-cell;
+                width: 1%;
+                text-decoration: none;
+                color:inherit;
+            }
+
+            .ButtonCaption {
+                font: -apple-system-caption1;
+                padding-top: 5px;
+            }
+
+            .ButtonDisabled .Button {
+                display: none;
+            }
+            .Text {
+                display: none;
+            }
+            .ButtonDisabled .Text {
+                display: table-cell;
+            }
+        </style>
+        <script type="text/javascript">
+            window.addEventListener('message', function(event) {
+                if (event.data) {
+                    const root = document.documentElement;
+
+                    const theme = event.data.theme;
+                    if (theme) {
+                        root.className = theme;
+                        root.setAttribute("__ibooks_iframe_theme", theme);
+                    }
+
+                    const level = event.data.level;
+                    if (level) {
+                        root.setAttribute("__ibooks_iframe_level", level);
+                    }
+                }
+            });
+        </script>
+    </head>
+    <body class="<!-- @@BUTTON_DISABLED_CLASS@@ -->">
+        <div class="ButtonContainer">
+            <a href="<!-- @@AUTHORIZATION_URL@@ -->" class="Button">
+                <div><!-- @@BUTTON_BODY_TEXT@@ --></div>
+                <div class="ButtonCaption"><!-- @@BUTTON_CAPTION_TEXT@@ --></div>
+            </a>
+            <div class="Text">
+                <div><!-- @@BUTTON_BODY_TEXT@@ --></div>
+            </div>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        window.parent.postMessage('ibooks-iframe-loaded', '*');
+    </script>
+</html>
