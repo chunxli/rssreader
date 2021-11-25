@@ -20,7 +20,7 @@ const App = () => {
   const [source, setSource] = useState({
       title: "RSS Sources",
         data: [
-          {name: "App Center Dev Blog", isOn: true, feed: "https://devblogs.microsoft.com/appcenter/feed/" }, 
+          {name: "App Center Dev Blog-", isOn: true, feed: "https://devblogs.microsoft.com/appcenter/feed/" }, 
           {name:"Apple Developer", isOn: false, feed: "https://developer.apple.com/news/rss/news.rss"}, 
           {name:"Xamarin Dev Blog", isOn: false, feed: "https://devblogs.microsoft.com/xamarin/feed/"}
         ]
