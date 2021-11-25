@@ -28,4 +28,4 @@ jobs:
         cache: 'npm'
     - run: npm install -g appcenter-cli
 #     - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-Android -d Staging -k ${{ secrets.PRIVATEKEY }} --token ${{ secrets.API_TOKEN }}
-    - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-iOS -d Staging -k ${{ secrets.PRIVATEKEY }} --token ${{ secrets.API_TOKEN }}
+    - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-iOS -d Staging -k ./private.pem --token ${{ secrets.API_TOKEN }}
