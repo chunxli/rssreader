@@ -14,18 +14,16 @@ jobs:
 
     runs-on: macOS-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm install -g appcenter-cli
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: npm install -g appcenter-cli
+      - run: ls
+      - run: cd RSSReader && npm install
+#       - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-Android -d Staging -k ${{ secrets.PRIVATEKEY }} --token ${{ secrets.API_TOKEN }}
+#       - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-iOS -d Staging -k ${{ secrets.PRIVATEKEY }} --token ${{ secrets.API_TOKEN }}
 #     - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-Android -d Staging -k ${{ secrets.PRIVATEKEY }} --token ${{ secrets.API_TOKEN }}
-    - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-iOS -d Staging -k ./private.pem --token ${{ secrets.API_TOKEN }}
+      - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-iOS -d Staging -k ./private.pem --token ${{ secrets.API_TOKEN }}
