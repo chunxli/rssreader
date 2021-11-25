@@ -22,7 +22,7 @@ jobs:
           node-version: '12.x'
       - run: npm install -g appcenter-cli
       - run: ls
-      - run: cd RSSReader && npm install
+      - run: npm install
 #       - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-Android -d Staging -k ${{ secrets.PRIVATEKEY }} --token ${{ secrets.API_TOKEN }}
 #       - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-iOS -d Staging -k ${{ secrets.PRIVATEKEY }} --token ${{ secrets.API_TOKEN }}
 #     - run: appcenter codepush release-react -a KevinApps/RSSReader-RN-Android -d Staging -k ${{ secrets.PRIVATEKEY }} --token ${{ secrets.API_TOKEN }}
