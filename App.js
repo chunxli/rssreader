@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import SectionListDemo from './components/SectionListDemo';
-import FlatListDemo from './components/FlatListDemo';
+import SectionListDemo from './components/SettingsPage';
+import FlatListDemo from './components/HomePage';
 import WebViewDemo from './components/WebViewDemo';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -8,6 +8,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import codePush from 'react-native-code-push';
+import {getData, storeData} from './utils/DataStorage';
+import RSSSource from './data/RSSSource.json';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,35 +19,19 @@ const App = () => {
   // Xamarin Dev Blog RSS: https://devblogs.microsoft.com/xamarin/feed/
 
   const [source, setSource] = useState({
-    title: 'RSS Sources',
-    data: [
-      {
-        name: 'App Center Dev Blog-',
-        isOn: true,
-        feed: 'https://devblogs.microsoft.com/appcenter/feed/',
-      },
-      {
-        name: 'Apple Developer',
-        isOn: false,
-        feed: 'https://developer.apple.com/news/rss/news.rss',
-      },
-      {
-        name: 'Xamarin Dev Blog',
-        isOn: false,
-        feed: 'https://devblogs.microsoft.com/xamarin/feed/',
-      },
-    ],
+    title: RSSSource.title,
+    data: RSSSource.data,
   });
 
-  const toggleSwitch = (index) => {
-    console.log(index);
-    const newSource = source;
-    newSource.data[index].isOn = !newSource.data[index].isOn;
-    setSource({
-      title: newSource.title,
-      data: newSource.data,
+  useEffect(() => {
+    getData('@rss_source').then((value) => {
+      setSource({
+        title: value.title,
+        data: value.data,
+      });
+      console.log(value);
     });
-  };
+  }, []);
 
   const FlatListDemoStack = () => {
     const FLStack = createStackNavigator();
@@ -69,7 +55,6 @@ const App = () => {
             <SectionListDemo
               {...props}
               source={source}
-              toggleSwitch={toggleSwitch}
             />
           )}
         </SLStack.Screen>
