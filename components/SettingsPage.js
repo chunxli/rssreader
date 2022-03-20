@@ -42,6 +42,9 @@ const SectionListDemo = () => {
   }, [newRSS, updateSingle]);
 
   const AddRSSToSource = async () => {
+    if (newRSS === '' || newRSSName === '') {
+      return;
+    }
     console.log(newRSS);
     await AddANewRSSData(newRSSName, newRSS);
     getData('@rss_source').then((value) => {
@@ -82,21 +85,24 @@ const SectionListDemo = () => {
         extraData={updateSingle}
         style={styles.container}
       />
-      <TextInput
-        placeholder="New RSS Name"
-        onChangeText={(value) => {
-          console.log(value);
-          setNewRSSName(value);
-        }}
-      />
-      <TextInput
-        placeholder="Input or Paste New RSS URL"
-        onChangeText={(value) => {
-          console.log(value);
-          setNewRSS(value);
-        }}
-      />
-      <Button title="ADD" onPress={AddRSSToSource} />
+
+      <View backgroundColor="white">
+        <TextInput
+          placeholder="New RSS Name"
+          onChangeText={(value) => {
+            console.log(value);
+            setNewRSSName(value);
+          }}
+        />
+        <TextInput
+          placeholder="Input or Paste New RSS URL"
+          onChangeText={(value) => {
+            console.log(value);
+            setNewRSS(value);
+          }}
+        />
+        <Button title="ADD" onPress={AddRSSToSource} />
+      </View>
     </>
   );
 };
